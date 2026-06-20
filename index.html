@@ -436,7 +436,7 @@
     </div>
 
     <script type="text/python">
-        from browser import document, window
+        from browser import document, window, ajax
         from browser.timer import set_timeout, clear_timeout
         import json
 
@@ -502,18 +502,20 @@
 
         def load_data():
             global turtle_data
-            try:
-                import urllib.request
-                response = urllib.request.urlopen('./assets/data.json')
-                data = response.read()
-                if isinstance(data, bytes):
-                    data = data.decode('utf-8')
-                turtle_data = json.loads(data)
-                document['status'].textContent = "Listo para dibujar 💕"
-                return True
-            except Exception as e:
-                document['status'].textContent = f"Error: {str(e)}"
-                return False
+            def complete(req):
+                global turtle_data
+                if req.status == 200:
+                    turtle_data = json.loads(req.text)
+                    document['status'].textContent = "Datos cargados 💕"
+                    start_drawing()
+                else:
+                    document['status'].textContent = (
+                        f"No se encontró data.json ({req.status})"
+                    )
+            req = ajax.ajax()
+            req.bind("complete", complete)
+            req.open("GET", "assets/data.json", True)
+            req.send()
 
         def draw_next():
             global current_shape, drawing_active, drawing_timeout
@@ -567,8 +569,8 @@
             global drawing_active, current_shape, drawing_timeout
             
             if not turtle_data:
-                if not load_data():
-                    return
+                load_data()
+                return
             
             # Limpiar timeout anterior si existe
             if drawing_timeout:
