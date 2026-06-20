@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,7 +34,7 @@
             border-radius: 25px;
             padding: 30px;
             margin: 40px 20px 20px 20px;
-            box-shadow: 
+            box-shadow:
                 0 8px 32px rgba(0, 0, 0, 0.3),
                 0 0 0 1px rgba(255, 255, 255, 0.1);
             max-width: 900px;
@@ -47,7 +48,7 @@
             color: #fff;
             margin-bottom: 30px;
             font-size: 2.5em;
-            text-shadow: 
+            text-shadow:
                 0 0 10px rgba(255, 20, 147, 0.8),
                 0 0 20px rgba(255, 20, 147, 0.4);
             letter-spacing: 2px;
@@ -412,10 +413,11 @@
         }
     </style>
 </head>
+
 <body onload="brython()">
     <div class="container">
-        <h1>🌷 Tulipanes para Becca</h1>
-        
+        <h1>🌷 Para Magdalena Orugas xd</h1>
+
         <div class="controls">
             <button class="btn btn-primary" onclick="startDrawing()">👨‍🎨 Dibujar</button>
             <button class="btn btn-secondary" onclick="pauseDrawing()">⏸️ Pausar</button>
@@ -581,7 +583,7 @@
             clear_canvas()
             document['status'].textContent = f"Dibujando {len(turtle_data['coordenadas'])} formas de amor..."
             draw_next()
-
+        
         def pause_drawing():
             global drawing_active, drawing_timeout
             drawing_active = False
@@ -616,10 +618,13 @@
         document['status'].textContent = "Cargando datos de amor..."
         load_data()
     </script>
-    
+
     <!-- Créditos -->
-    <div style="text-align: center; margin-top: 30px; padding: 20px; color: rgba(255, 255, 255, 0.7); font-family: 'Outfit', sans-serif; font-size: 14px;">
-        by <a href="https://github.com/Sandreke" target="_blank" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; font-weight: bold;">Sandreke</a>
+    <div
+        style="text-align: center; margin-top: 30px; padding: 20px; color: rgba(255, 255, 255, 0.7); font-family: 'Outfit', sans-serif; font-size: 14px;">
+        by <a href="https://github.com/Sandreke" target="_blank"
+            style="color: rgba(255, 255, 255, 0.7); text-decoration: none; font-weight: bold;">Sandreke</a>
     </div>
 </body>
+
 </html>
